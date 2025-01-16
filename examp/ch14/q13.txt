@@ -1,0 +1,1 @@
+This prints N is undefined since all the preprocessing is done before the actual running, which is when f is called and returned. So, N is preprocessed to be undefined before f is even called.

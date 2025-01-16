@@ -1,0 +1,10 @@
+strcpy(str, "tire-bouchon")
+	copies the contents of tire-bouchon into the address specified by str. It adds a string terminator at the end too just as tire-bouchon has a string terminator character.
+
+strcpy(&str[4], "d-or-wi")
+	copies all the contents of d-or-wi into the str at index 4, placing the string terminator at the end of d-or-wi. If there were characters have index 4 in str, they will be replaced! Which makes any leftover characters longer than the length of d-or-wi be replaced as well, since the string terminator will override the characters.
+
+strcat(str, "red?")
+	concatenates red? to the end of str, such that the string terminator moves further after the ? in red? 
+
+

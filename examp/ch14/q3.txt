@@ -1,0 +1,7 @@
+#define DOUBLE(x) 2*x
+
+
+a) the value of DOUBLE(1+2) is 4
+b) the value of 4/DOUBLE(2) is 4
+c) fixed would be #define DOUBLE(x) (2*(x))
+This is because without brackets, the x given to the macro will be pasted just as, such that DOUBLE(1+2) will be 2*1+2, or 4. But bracketing the expression ensures the given parameter is bracketed as well. 

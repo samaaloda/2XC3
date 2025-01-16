@@ -1,0 +1,3 @@
+One advantage of using C as opposed to Python is that C has the switch(x) methods which allow for new interpretation and usage of if and elif statements.
+One disadvantage of using C as opposed to Python is that C is less intuitive to code with in my opinion, which makes it harder to learn and to debug. 
+I prefer to use Python due to its simplicity but I appreciate the complexity of C, and understand that some features work better in C.

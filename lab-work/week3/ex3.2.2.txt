@@ -1,0 +1,6 @@
+a. All this script does is it stores the first argument passed after the command into $1, then executes it.
+./di.sh 'ls -l'
+
+b. My initial guess is that it prints out: a 1 a1C 1*10
+It actually prints out: a 1 a1C 1*10 
+

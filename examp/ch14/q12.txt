@@ -1,0 +1,20 @@
+#define M 10
+
+a) #if M
+this will work, however all statements engulfed in this statement will never proceed since M has to be one for that to happen. (1=true in C)
+
+CORRECTION: it will proceed becuase C only checks if M is not 0, i.e. anything but 0 is defined as true.
+
+WRONG: this will fail, since before compiling the M will be replaced with 10 and since that is numeric, and we cannot calculate if 10, this will not work
+b) #ifdef M
+this will return 1 if M is defined, 0 if otherwise. This will work.
+c) #ifndef M
+CORRECTION: checks if M is NOT defined. Gives 1 if not defined, 0 otherwise, therefore fails here
+
+checks if M is defined earlier or in a different file, if not it will set M to a given value given in following statements
+d) #if defined(M)
+M is defined
+proceeds
+e) #if !defined(M)
+M is not not defined, therefore fails
+does not proceed

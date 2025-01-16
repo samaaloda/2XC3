@@ -1,0 +1,12 @@
+This code frees p before it has a change to transverse to next node.
+
+Instead, the code should go like:
+
+for(p=first;p!=NULL;p=p->next)
+	free(p);
+
+void *p=first;
+while(p)
+	void *temp=p;
+	p=p->next;
+	free(temp);

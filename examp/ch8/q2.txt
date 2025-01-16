@@ -1,0 +1,1 @@
+If a digit were in character form, such as char*, we can access each subscript the same way we'd access a letter in a String or char array. We just call on *(digit+i) where i is the index of the digit. Another way would be to call digit[i]. 

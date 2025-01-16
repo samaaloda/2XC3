@@ -1,0 +1,9 @@
+cat 2XC3-data/gutenberg/english/* |./splt| sort|uniq 
+
+cat 2XC3-data/gutenberg/english/dracula.txt |./splt|sort|uniq|wc
+
+cat 2XC3-data/gutenberg/english/dracula.txt | ./splt | sort | uniq > lexicon.txt
+
+cat 2XC3-data/gutenberg/english/dracula.txt | ./splt| sort | uniq | head -n 1
+cat 2XC3-data/gutenberg/english/dracula.txt |./splt| sort | uniq | tail -n 1
+cat 2XC3-data/gutenberg/english/dracula.txt |./splt| sort | uniq | head -n 9998 | tail -n 1

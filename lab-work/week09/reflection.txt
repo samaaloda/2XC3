@@ -1,0 +1,35 @@
+a. Based on my experience in this lab, primes3 did best, then primes2, and 
+finally primes, in terms of speed. Since primes2 took less time, that makes
+parametrized macros more efficient, faster and beneficial in some cases than 
+others. However, this comes with a trade-off. These macros are not as 
+flexible, and are prone to errors. First off, they don't check for variable 
+type when called, which makes their usage prone to errors. For example, if an
+unknowledgeable programer decided to use ROUND(num) with a character instead
+of a number, the program may crash or work inaccurately as numerical 
+operations don't work the same on characters as numbers. They are also less 
+flexible in terms of the ability to overloading as that is possible with functions.
+Regardless, they did best in terms of speed, and in highly-critical situations
+where every millisecond of the program matters, it can help reduce the time taken
+by a great amount. 
+
+b. When comparing the speed difference between primes2 and primes3, primes3 was
+slightly slower, which may be due to the fact that inline functions perform 
+error checking and safety. This makes the equivalent code more ideal as they 
+are safer. However, in memory- and time-critical programs, the parametrized 
+macros can end up being better overall. If used properly, they are fast and 
+efficient, and can increase code reusability and modularity throughout functions.
+
+c. I got a much better performance improvement by improving the alogirthm. 
+The algorithym improved primes from about 3.8s to 0.05s as opposed to primes2 
+and primes 3 which remained very similar. My gprof report reports that isprime 
+had 400001 function calls, and so does primes4, which indicates that the 
+number of function calls did not change, which means that the time difference 
+was based on only the algorithm implemented of only checking up to the square 
+root of the number. 
+
+d. Sometimes the milliseconds matter, since they can pile up and be extremely 
+inefficient. In some cases, a programmer might want to optimize as much as 
+possible, which includes utilizing parametrized macros. There are times where 
+I think using parametrized macros are easier and more modular than functions, 
+such as calling the subtotal function from the previous example.
+

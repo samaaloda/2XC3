@@ -1,0 +1,10 @@
+a) is not legal, because you must derefernece p to get f, of which then can be accessed as ->b
+
+b) not legal
+CORRECTION: LEGAL b/c array of int is not primitive, must be accessed by -> :)
+
+c) legal :)
+
+d) legal :)
+
+CORRECTION: NOT LEGAL because -> operator is used to reference another struct, whereas . is for primitive type attributes. This means that you can't access p->d->c but it should be p->d.c

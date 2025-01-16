@@ -1,0 +1,6 @@
+wc -w -c -l 2XC3-data/gutenberg/spanish/nazarin.txt | ./wstat 
+wc -w -c -l 2XC3-data/gutenberg/spanish/* | ./wstat
+head -n 100 2XC3-data/gutenberg/spanish/nazarin.txt |wc -w -c -l |./wstat
+tail -n 100 2XC3-data/gutenberg/spanish/nazarin.txt | wc -w -c -l | ./wstat
+./splt < 2XC3-data/gutenberg/spanish/nazarin.txt |sort | uniq |wc -w -c -l| ./wstat 
+ 

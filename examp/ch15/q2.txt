@@ -1,0 +1,8 @@
+a) function prototypes should be included as they will be the ones the linker can assure are there before being accessed. 
+
+b) function definitions cannot be there as that is the purpose of the multiple files and a header file. Prototypes allow the compiler to identify where and what functions are there so they may be linked together.
++++Also because it can potentially define functions multiple times.
+c) macro definitions should stay in their respective files to ensure that any definitions aren't overwritten each other. 
+If the intention is for them to be the same, then they need to be placed in the header files.
+
+d) type definitions should definitely be there for the compiler and linker to understand types of arguments and/or return types.

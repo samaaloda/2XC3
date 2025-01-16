@@ -1,0 +1,14 @@
+#!/bin/bash
+if [[ $1 == "" ]]
+then
+	while read line
+	do
+		for word in $line
+		do
+			echo "$word"
+		done
+	done
+else
+	echo "No arguments allowed." >&2
+	exit 1
+fi

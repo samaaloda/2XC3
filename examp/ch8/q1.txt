@@ -1,0 +1,1 @@
+sizeof(a)/sizeof(a[0]) is considered superior to sizeof(a)/sizeof(t) where t is the type of the element because t is depenendant on type of the array whereas sizeof(a[0]) ensures programmers and users alike allows use the correct size based on the first element. In other words, the second way requires programmer to be sure of their type but not the first way.

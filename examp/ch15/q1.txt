@@ -1,0 +1,4 @@
+Some of these advantages include programmers working together on seperate files which have unique different functions from each other. 
+Only files on the header are visible, meaning all other functions are removed. Easier debugging.
+
+Some of these disadvantages include not explicitly knowing how to integrate these files together, as they change perhaps to a different programmer. 

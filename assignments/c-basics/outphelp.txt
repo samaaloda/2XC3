@@ -1,0 +1,8 @@
+Usage: convert [-b BASE] [-r START FINISH]
+Converts a number from standard input into BASE of choosing. It can convert numbers from a range of START to FINISH to the desired BASE as needed.
+
+       --help,       display this help and exit
+Examples:
+       convert -b 4 -r -3 3       converts numbers from -3 to 3 from decimal to base 4.
+       convert -b 18        converts numbers from standard input from decimal to base 18
+       convert        converts numbers from standard input from decimal to hexadecimal.

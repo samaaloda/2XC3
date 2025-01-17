@@ -1,0 +1,103 @@
+#!/bin/bash
+# Displays the rank of baby names in the US of a certain gender in the specified year.
+# Sama Al-Oda, McMaster University, October 22nd, 2024
+
+############################################################################
+# Given a single name, year, and assigned gender, outputs the rank
+# Globals: gender, name, fileName
+# Arguments: None
+# Outputs: prints the rank of the name in that year for the specified gender
+# Returns: N.A.
+############################################################################
+rank() {
+	if [[ "$gender" =~ [f|F] ]]
+	then
+		local genderName="female"
+	else
+		local genderName="male"
+	fi
+	if [[ $(cat $fileName | grep -i "^$name,$gender" | wc -l) = "1" ]] # if specified name is found in that year's specified file
+	then
+		local name_ranked=$(cat $fileName | grep -ioP "\b[a-zA-Z]+,$gender,[0-9]+\b" | grep -niP "\b$name,$gender,[0-9]+\b" | sort -g | grep -oP "^[0-9]+") # finds the ranking of the specified name within the specified gender
+		local gender_name_tally=$(cat $fileName | grep -ioP "\b[a-zA-Z]+,$gender,[0-9]+\b" | wc -l) # collects the sum of all the specified gender's names in the specified year
+		echo "$year: $name ranked $name_ranked out of $gender_name_tally $genderName names." 
+	else # if specified name is not found in that year's specified file
+		echo "$year: $name not found among $genderName names."
+	fi
+}
+
+############################################
+# Outputs usage string to stderr
+# Globals: None
+# Arguments: None
+# Outputs: sends the usage string to stderr
+# Returns: N.A.
+############################################
+usage() {
+	echo "bn <year> <assigned gender: f|F|m|M|b|B>" >&2
+}
+
+########################################
+# Outputs help text to stdout
+# Globals: None
+# Arguments: None
+# Outputs: sends the help text to stdout
+# Returns: N.A.
+########################################
+help(){
+
+	echo "Usage: bn [OPTION] [YEAR] [ASSIGNED GENDER: f|F|m|M|b|B]"
+	echo "Displays the rank of GENDER baby names in the US during the year YEAR."
+	echo ""
+	echo "        --help       display this help and exit"
+	echo ""
+	echo "Examples:"
+	echo "bn 1984 B            Accepts both female and male names from standard input and displays their rank amongst male, then female names, in 1984."
+	echo "bn 2016 M            Accepts male names from standard input and displays their rank amongst male names in 2016."
+	exit 0
+}
+
+if [[ "$#" = "2" && "$1" =~ ^[0-9]{4}$ && "$2" =~ ^[fFmMbB]$ && -f "us_baby_names/yob$1.txt" ]] # if two arguments, and first argument is a 4 digit integer, and second argument is either f, F, m, M, b or B
+then
+	while read line 
+	do
+		for word in $line
+		do
+			if [[ ! $word =~ ^[a-zA-Z]+$ ]] # if the word is not made of only letters
+			then
+				echo "Badly formatted name: $word" >&2
+				exit 3
+			else
+				fileName="us_baby_names/yob$1.txt"
+				year="$1"
+				name="$word"
+				if [[ "$2" =~ ^[bB]$ ]] # if specified gender is both, male names will be ranked first, then female
+				then 
+					gender="M"
+					rank
+					gender="F"
+					rank
+				else
+					gender="$2" 
+					rank
+				fi
+			fi
+		done
+	done
+elif [[ "$#" = "2" && "$1" =~ ^[0-9]{4}$ && "$2" =~ ^[^fFmMbB]$ ]] # if two arguments were given, the first one being a 4-digit integer and the second one being anything but just f, F, m, M, B, and b.
+then
+	echo "Badly formatted assigned gender: $2" >&2
+	usage 
+	exit 2
+elif [[ "$#" = "2" && "$1" =~ ^[0-9]{4}$ && ! -f "us_baby_names/yob$1.txt" ]] # if two arguments were given, and the first argument is a 4-digit integer but there's no data for the specified year
+then
+	echo "No data for $1" >&2
+	exit 4
+elif [[ "$#" = "1" && "$1" = "--help" ]] ## if the --help command is requested
+then
+	help
+else ## if none of the above were executed
+	usage 
+	exit 1
+fi
+
